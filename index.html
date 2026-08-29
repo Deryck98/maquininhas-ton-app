@@ -307,6 +307,11 @@
   .quiz-result{display:none;margin-top:13px;padding:12px;border-radius:12px;background:rgba(0,215,0,.1);font-size:12.5px;line-height:1.5;color:var(--ink);}
   .quiz-result.active{display:block;}
   .quiz-result strong{color:var(--green-deep);}
+  .quiz-product{display:flex;align-items:center;gap:13px;margin-bottom:10px;}
+  .quiz-product-image{width:72px;height:92px;object-fit:contain;flex-shrink:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;}
+  .quiz-product-copy{flex:1;}
+  .quiz-product-copy strong{display:block;font-size:14px;margin-bottom:4px;}
+  .quiz-product-copy span{display:block;font-size:11.5px;color:var(--muted);line-height:1.4;}
   .quiz-checkout{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:12px;border-radius:11px;background:var(--green);color:#fff;font-weight:700;}
 
   .section-label{width:100%;display:flex;align-items:center;gap:10px;margin:24px 0 14px;}
@@ -817,10 +822,20 @@ function recommendTon() {
     'T2 Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_D195&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor',
     'T1 Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_D150&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor'
   };
+  var productImages = {
+    'T3 Smart Ton Black': 'T3tonsmart.png',
+    'T3 Smart Ton Mega+': 'T3tonsmart.png',
+    'T3 Ton Black': 'T3ton.png',
+    'T3 Ton Mega+': 'T3ton.png',
+    'T2 Ton Mega+': 'T2ton.png',
+    'T1 Ton Mega+': 'T1ton.png'
+  };
   var checkout = checkoutLinks[model];
+  var productImage = productImages[model];
 
   result.classList.add('active');
-  result.innerHTML = '<strong>Recomendação: ' + model + '</strong><br>' + reason + '. O cupom DERYCKBENTOVC será aplicado no checkout oficial.<a class="quiz-checkout" target="_blank" rel="noopener" href="' + checkout + '">Comprar este modelo com desconto →</a>';
+  result.innerHTML = '<div class="quiz-product"><img class="quiz-product-image" src="' + productImage + '" width="720" height="1080" alt="' + model + '"><div class="quiz-product-copy"><strong>' + model + '</strong><span>Esta é a maquininha recomendada para suas respostas.</span></div></div>' + reason + '. O cupom DERYCKBENTOVC será aplicado no checkout oficial.<a class="quiz-checkout" target="_blank" rel="noopener" href="' + checkout + '">Comprar este modelo com desconto →</a>';
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 /* ---- Lightbox ---- */
