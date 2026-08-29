@@ -340,6 +340,8 @@
     transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
   .model-card:hover{border-color:var(--green);transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(0,215,0,0.45);}
+  .model-card.is-cnpj{border-color:#1a1a1a;background:linear-gradient(180deg,#FFFFFF 0%,#FAFAFA 100%);}
+  .model-card.is-cnpj:hover{border-color:#1a1a1a;box-shadow:0 8px 18px -10px rgba(0,0,0,0.35);}
   .model-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
   .model-icon{
     width:44px;height:56px;border-radius:10px;flex-shrink:0;
@@ -363,6 +365,23 @@
     padding:4px 9px;border-radius:100px;
     text-transform:uppercase;white-space:nowrap;letter-spacing:.02em;
   }
+  .model-tag.black-tag{
+    color:#fff;background:#1a1a1a;
+  }
+
+  /* ---- CNPJ exclusive badge/banner ---- */
+  .cnpj-banner{
+    display:flex;align-items:center;gap:8px;
+    background:#1a1a1a;color:#FFD54A;
+    border-radius:10px;padding:8px 10px;
+    margin-bottom:12px;
+    font-size:11.5px;font-weight:800;
+    letter-spacing:.01em;
+    border:1px solid #000;
+  }
+  .cnpj-banner svg{width:15px;height:15px;flex-shrink:0;color:#FFD54A;}
+  .cnpj-banner span{color:#fff;font-weight:600;}
+
   .model-feats{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
   .model-feats li{
     font-size:12.5px;color:var(--ink);line-height:1.4;
@@ -376,6 +395,8 @@
     transition:background .15s ease;
   }
   .model-card:hover .model-cta{background:var(--green);color:#fff;}
+  .model-card.is-cnpj .model-cta{background:#1a1a1a;color:#FFD54A;}
+  .model-card.is-cnpj:hover .model-cta{background:#000;color:#FFD54A;}
 
   /* ---- Lightbox / Image Zoom ---- */
   .lightbox-overlay{
@@ -507,11 +528,15 @@
     <div class="section-label"><span>Modelos disponíveis</span></div>
 
     <!-- T3 SMART BLACK -->
-    <article class="model-card" itemscope itemtype="https://schema.org/Product">
+    <article class="model-card is-cnpj" itemscope itemtype="https://schema.org/Product">
       <div class="model-head">
-        <div class="model-icon" onclick="openLightbox(this)" title="Clique para ampliar"><img src="T3tonsmart.png" alt="Maquininha T3 Smart Ton Black com chip 4G, NFC e Pix para todo o Brasil" itemprop="image"></div>
+        <div class="model-icon" onclick="openLightbox(this)" title="Clique para ampliar"><img src="T3tonsmart.png" alt="Maquininha T3 Smart Ton Black com chip 4G, NFC e Pix — exclusiva para CNPJ" itemprop="image"></div>
         <div class="model-text"><div class="t" itemprop="name">T3 Smart Ton Black</div></div>
-        <div class="model-tag">Smart</div>
+        <div class="model-tag black-tag">Black</div>
+      </div>
+      <div class="cnpj-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        <span>Exclusiva para CNPJ (pessoa jurídica)</span>
       </div>
       <ul class="model-feats">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Chip 4G e Wi-Fi</li>
@@ -545,11 +570,15 @@
     </article>
 
     <!-- T3 BLACK -->
-    <article class="model-card" itemscope itemtype="https://schema.org/Product">
+    <article class="model-card is-cnpj" itemscope itemtype="https://schema.org/Product">
       <div class="model-head">
-        <div class="model-icon" onclick="openLightbox(this)" title="Clique para ampliar"><img src="T3ton.png" alt="Maquininha T3 Ton Black com chip 3G, NFC e Pix para todo o Brasil" itemprop="image"></div>
+        <div class="model-icon" onclick="openLightbox(this)" title="Clique para ampliar"><img src="T3ton.png" alt="Maquininha T3 Ton Black com chip 3G, NFC e Pix — exclusiva para CNPJ" itemprop="image"></div>
         <div class="model-text"><div class="t" itemprop="name">T3 Ton Black</div></div>
-        <div class="model-tag">Black</div>
+        <div class="model-tag black-tag">Black</div>
+      </div>
+      <div class="cnpj-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        <span>Exclusiva para CNPJ (pessoa jurídica)</span>
       </div>
       <ul class="model-feats">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Chip 3G e Wi-Fi</li>
