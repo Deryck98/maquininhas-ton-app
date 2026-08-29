@@ -166,6 +166,51 @@
         "@type": "ReadAction",
         "target": "https://deryck98.github.io/maquininhas-ton-app/"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A maquininha Ton entrega para todo o Brasil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A maquininha Ton é entregue em todo o território nacional, em qualquer estado ou cidade, com pedido feito direto no checkout oficial da Ton."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como uso o cupom de desconto DERYCKBENTOVC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Basta clicar em 'Pedir com meu cupom' ou em qualquer modelo desta página. O cupom DERYCKBENTOVC já vem aplicado automaticamente no link do checkout oficial da Ton."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a diferença entre as maquininhas Ton Black e Ton Mega+?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As maquininhas da linha Black são exclusivas para CNPJ (pessoa jurídica). Já a linha Mega+ está disponível tanto para CPF quanto para CNPJ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso pagar aluguel pela maquininha Ton?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. As maquininhas Ton não têm mensalidade nem aluguel fixo obrigatório na contratação padrão."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A maquininha Ton aceita Pix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, todos os modelos Ton (T1, T2, T3 e T3 Smart) aceitam recebimento via Pix diretamente na maquininha ou pelo aplicativo."
+          }
+        }
+      ]
     }
   ]
 }
@@ -438,6 +483,20 @@
     pointer-events:none;
   }
 
+  /* ---- SEO content section ---- */
+  .seo-section{width:100%;}
+  .seo-section h2{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  .seo-section p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+  .seo-section p strong{color:var(--ink);}
+
+  /* ---- FAQ ---- */
+  .faq-item{
+    width:100%;background:var(--card);border:1.5px solid var(--line);
+    border-radius:14px;padding:14px 16px;margin-bottom:10px;
+  }
+  .faq-item h3{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .faq-item p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
   footer{margin-top:30px;text-align:center;}
   footer p{font-size:11.5px;color:var(--muted);}
   footer .brand{color:var(--green-deep);font-weight:700;}
@@ -639,6 +698,36 @@
       </ul>
       <a class="model-cta" target="_blank" rel="noopener" href="https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_D150&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor" itemprop="offers">Pedir esse modelo →</a>
     </article>
+  </section>
+
+  <section class="seo-section" aria-label="Sobre a maquininha Ton">
+    <div class="section-label"><span>Maquininha Ton em todo o Brasil</span></div>
+    <p><strong>Maquininha Ton com desconto, entrega nacional.</strong> Compre sua maquininha de cartão Ton em qualquer cidade do Brasil — Norte, Nordeste, Centro-Oeste, Sudeste e Sul — direto com o revendedor autorizado Deryck Alec e o cupom <strong>DERYCKBENTOVC</strong> aplicado no checkout oficial.</p>
+    <p>Ideal para <strong>MEI, autônomos e empresas</strong> que querem receber por Pix, cartão de crédito, débito e aproximação (NFC), sem mensalidade fixa. Escolha entre os modelos T1, T2, T3, T3 Smart e as versões exclusivas para CNPJ da linha Black.</p>
+  </section>
+
+  <section aria-label="Perguntas frequentes sobre a maquininha Ton">
+    <div class="section-label"><span>Perguntas frequentes</span></div>
+    <div class="faq-item">
+      <h3>A maquininha Ton entrega para todo o Brasil?</h3>
+      <p>Sim. A entrega é feita em qualquer estado ou cidade do país, com pedido direto no checkout oficial da Ton.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como uso o cupom de desconto DERYCKBENTOVC?</h3>
+      <p>É só clicar em "Pedir com meu cupom" ou em qualquer modelo desta página — o cupom já vem aplicado automaticamente.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Qual a diferença entre a linha Black e a Mega+?</h3>
+      <p>A linha Black é exclusiva para CNPJ (pessoa jurídica). A linha Mega+ está disponível para CPF e CNPJ.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Preciso pagar aluguel pela maquininha?</h3>
+      <p>Não, as maquininhas Ton não têm mensalidade nem aluguel fixo obrigatório.</p>
+    </div>
+    <div class="faq-item">
+      <h3>A maquininha Ton aceita Pix?</h3>
+      <p>Sim, todos os modelos aceitam Pix direto na maquininha ou pelo aplicativo.</p>
+    </div>
   </section>
 
   <footer>

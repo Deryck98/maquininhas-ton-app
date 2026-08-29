@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deryck98.github.io/maquininhas-ton-app/sitemap.xml
