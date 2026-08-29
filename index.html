@@ -293,6 +293,22 @@
   .share-btn.copy-link.copied{border-color:var(--green);background:rgba(0,215,0,0.08);}
   .share-btn.copy-link.copied svg{fill:var(--green);}
 
+  /* ---- Lead quiz ---- */
+  .lead-quiz{width:100%;margin-top:24px;background:var(--card);border:2px solid var(--green);border-radius:20px;padding:18px;box-shadow:0 10px 24px -18px rgba(0,117,42,.65);}
+  .lead-quiz h2{font-size:20px;line-height:1.15;color:var(--ink);}
+  .lead-quiz .quiz-intro{font-size:12.5px;color:var(--muted);line-height:1.5;margin:5px 0 15px;}
+  .quiz-field{display:block;margin-top:12px;}
+  .quiz-field span{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .quiz-field select{width:100%;appearance:none;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 36px 11px 12px;color:var(--ink);font:600 12.5px 'Inter',sans-serif;background-image:linear-gradient(45deg,transparent 50%,var(--green-deep) 50%),linear-gradient(135deg,var(--green-deep) 50%,transparent 50%);background-position:calc(100% - 17px) 16px,calc(100% - 12px) 16px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;}
+  .quiz-field select:focus{outline:3px solid rgba(0,215,0,.18);border-color:var(--green);}
+  .quiz-submit{width:100%;margin-top:15px;border:0;border-radius:13px;padding:13px 14px;background:var(--green);color:#fff;font:700 13px 'Inter',sans-serif;cursor:pointer;transition:background .15s ease,transform .15s ease;}
+  .quiz-submit:hover{background:var(--green-dark);}
+  .quiz-submit:active{transform:scale(.98);}
+  .quiz-result{display:none;margin-top:13px;padding:12px;border-radius:12px;background:rgba(0,215,0,.1);font-size:12.5px;line-height:1.5;color:var(--ink);}
+  .quiz-result.active{display:block;}
+  .quiz-result strong{color:var(--green-deep);}
+  .quiz-whatsapp{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:11px;border-radius:11px;background:#25D366;color:#fff;font-weight:700;}
+
   .section-label{width:100%;display:flex;align-items:center;gap:10px;margin:24px 0 14px;}
   .section-label h2{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;}
   .section-label::after{content:"";flex:1;height:1.5px;background:var(--line);}
@@ -502,6 +518,38 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
     </button>
   </div>
+
+  <section class="lead-quiz" aria-labelledby="quiz-title">
+    <h2 id="quiz-title">Qual maquininha Ton combina com você?</h2>
+    <p class="quiz-intro">Responda três perguntas e receba uma recomendação em menos de um minuto.</p>
+    <label class="quiz-field">
+      <span>Você compra com CPF ou CNPJ?</span>
+      <select id="quizDoc">
+        <option value="">Selecione</option>
+        <option value="cpf">CPF</option>
+        <option value="cnpj">CNPJ</option>
+      </select>
+    </label>
+    <label class="quiz-field">
+      <span>Precisa imprimir o comprovante?</span>
+      <select id="quizReceipt">
+        <option value="">Selecione</option>
+        <option value="sim">Sim, quero comprovante impresso</option>
+        <option value="nao">Não, pode ser por SMS</option>
+      </select>
+    </label>
+    <label class="quiz-field">
+      <span>O que é mais importante?</span>
+      <select id="quizPriority">
+        <option value="">Selecione</option>
+        <option value="smart">Tela touchscreen e mais recursos</option>
+        <option value="independente">Usar sem depender do celular</option>
+        <option value="economia">Economia e simplicidade</option>
+      </select>
+    </label>
+    <button class="quiz-submit" type="button" onclick="recommendTon()">Descobrir minha maquininha</button>
+    <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+  </section>
 
   <section id="modelos" aria-label="Modelos de maquininhas Ton disponíveis">
     <div class="section-label"><h2>Modelos de maquininhas Ton</h2></div>
@@ -730,6 +778,44 @@ function copyLink() {
     btn.classList.add('copied');
     setTimeout(function() { btn.classList.remove('copied'); }, 2000);
   }
+}
+
+/* ---- Lead qualification quiz ---- */
+function recommendTon() {
+  var doc = document.getElementById('quizDoc').value;
+  var receipt = document.getElementById('quizReceipt').value;
+  var priority = document.getElementById('quizPriority').value;
+  var result = document.getElementById('quizResult');
+
+  if (!doc || !receipt || !priority) {
+    result.classList.add('active');
+    result.innerHTML = 'Preencha as três respostas para receber sua recomendação.';
+    return;
+  }
+
+  var model;
+  var reason;
+  if (priority === 'smart') {
+    model = doc === 'cnpj' ? 'T3 Smart Ton Black' : 'T3 Smart Ton Mega+';
+    reason = 'tem tela touchscreen, conexão própria e comprovante impresso ou por SMS';
+  } else if (receipt === 'sim') {
+    model = doc === 'cnpj' ? 'T3 Ton Black' : 'T3 Ton Mega+';
+    reason = 'funciona com chip e Wi-Fi e permite imprimir o comprovante';
+  } else if (priority === 'economia') {
+    model = 'T1 Ton Mega+';
+    reason = 'é uma opção simples que funciona conectada ao celular e envia comprovante por SMS';
+  } else {
+    model = 'T2 Ton Mega+';
+    reason = 'tem chip e Wi-Fi próprios, recebe por aproximação e envia comprovante por SMS';
+  }
+
+  var docLabel = doc === 'cnpj' ? 'CNPJ' : 'CPF';
+  var receiptLabel = receipt === 'sim' ? 'preciso imprimir comprovante' : 'aceito comprovante por SMS';
+  var message = 'Olá, Deryck! Fiz o comparador do site e recebi a recomendação da ' + model + '. Vou comprar com ' + docLabel + ' e ' + receiptLabel + '. Quero confirmar se esse é o melhor modelo para mim.';
+  var whatsapp = 'https://wa.me/5592991623048?text=' + encodeURIComponent(message);
+
+  result.classList.add('active');
+  result.innerHTML = '<strong>Recomendação: ' + model + '</strong><br>' + reason + '. Confirme os detalhes com o Deryck antes do pedido.<a class="quiz-whatsapp" target="_blank" rel="noopener" href="' + whatsapp + '">Confirmar no WhatsApp →</a>';
 }
 
 /* ---- Lightbox ---- */
