@@ -1,3 +1,4 @@
+JavaScript válido
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -308,7 +309,9 @@
   .quiz-result.active{display:block;}
   .quiz-result strong{color:var(--green-deep);}
   .quiz-product{display:flex;align-items:center;gap:13px;margin-bottom:10px;}
-  .quiz-product-image{width:72px;height:92px;object-fit:contain;flex-shrink:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;}
+  .quiz-product-zoom{width:72px;height:92px;flex-shrink:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;cursor:zoom-in;transition:transform .15s ease,box-shadow .15s ease;}
+  .quiz-product-zoom:hover{transform:scale(1.04);box-shadow:0 5px 14px -7px rgba(0,117,42,.55);}
+  .quiz-product-image{width:100%;height:100%;object-fit:contain;display:block;}
   .quiz-product-copy{flex:1;}
   .quiz-product-copy strong{display:block;font-size:14px;margin-bottom:4px;}
   .quiz-product-copy span{display:block;font-size:11.5px;color:var(--muted);line-height:1.4;}
@@ -834,7 +837,7 @@ function recommendTon() {
   var productImage = productImages[model];
 
   result.classList.add('active');
-  result.innerHTML = '<div class="quiz-product"><img class="quiz-product-image" src="' + productImage + '" width="720" height="1080" alt="' + model + '"><div class="quiz-product-copy"><strong>' + model + '</strong><span>Esta é a maquininha recomendada para suas respostas.</span></div></div>' + reason + '. O cupom DERYCKBENTOVC será aplicado no checkout oficial.<a class="quiz-checkout" target="_blank" rel="noopener" href="' + checkout + '">Comprar este modelo com desconto →</a>';
+  result.innerHTML = '<div class="quiz-product"><button class="quiz-product-zoom" type="button" onclick="openLightbox(this)" aria-label="Ampliar foto da ' + model + '" title="Clique para ampliar"><img class="quiz-product-image" src="' + productImage + '" width="720" height="1080" alt="' + model + '"></button><div class="quiz-product-copy"><strong>' + model + '</strong><span>Toque na foto para ampliar a maquininha recomendada.</span></div></div>' + reason + '. O cupom DERYCKBENTOVC será aplicado no checkout oficial.<a class="quiz-checkout" target="_blank" rel="noopener" href="' + checkout + '">Comprar este modelo com desconto →</a>';
   result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
