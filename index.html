@@ -307,7 +307,7 @@
   .quiz-result{display:none;margin-top:13px;padding:12px;border-radius:12px;background:rgba(0,215,0,.1);font-size:12.5px;line-height:1.5;color:var(--ink);}
   .quiz-result.active{display:block;}
   .quiz-result strong{color:var(--green-deep);}
-  .quiz-whatsapp{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:11px;border-radius:11px;background:#25D366;color:#fff;font-weight:700;}
+  .quiz-checkout{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:12px;border-radius:11px;background:var(--green);color:#fff;font-weight:700;}
 
   .section-label{width:100%;display:flex;align-items:center;gap:10px;margin:24px 0 14px;}
   .section-label h2{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;}
@@ -809,13 +809,18 @@ function recommendTon() {
     reason = 'tem chip e Wi-Fi próprios, recebe por aproximação e envia comprovante por SMS';
   }
 
-  var docLabel = doc === 'cnpj' ? 'CNPJ' : 'CPF';
-  var receiptLabel = receipt === 'sim' ? 'preciso imprimir comprovante' : 'aceito comprovante por SMS';
-  var message = 'Olá, Deryck! Fiz o comparador do site e recebi a recomendação da ' + model + '. Vou comprar com ' + docLabel + ' e ' + receiptLabel + '. Quero confirmar se esse é o melhor modelo para mim.';
-  var whatsapp = 'https://wa.me/5592991623048?text=' + encodeURIComponent(message);
+  var checkoutLinks = {
+    'T3 Smart Ton Black': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONBLACK_TIER_SMART_POS&userAnticipation=0&userTag=tonblack_tier&utm_medium=quiz&utm_source=revendedor',
+    'T3 Smart Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_SMART_POS&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor',
+    'T3 Ton Black': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONBLACK_TIER_S920&userAnticipation=0&userTag=tonblack_tier&utm_medium=quiz&utm_source=revendedor',
+    'T3 Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_S920&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor',
+    'T2 Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_D195&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor',
+    'T1 Ton Mega+': 'https://ton.com.br/checkout/cart/?coupon=DERYCKBENTOVC&productId=TONMEGA_TIER_D150&userAnticipation=0&userTag=tonmega_tier&utm_medium=quiz&utm_source=revendedor'
+  };
+  var checkout = checkoutLinks[model];
 
   result.classList.add('active');
-  result.innerHTML = '<strong>Recomendação: ' + model + '</strong><br>' + reason + '. Confirme os detalhes com o Deryck antes do pedido.<a class="quiz-whatsapp" target="_blank" rel="noopener" href="' + whatsapp + '">Confirmar no WhatsApp →</a>';
+  result.innerHTML = '<strong>Recomendação: ' + model + '</strong><br>' + reason + '. O cupom DERYCKBENTOVC será aplicado no checkout oficial.<a class="quiz-checkout" target="_blank" rel="noopener" href="' + checkout + '">Comprar este modelo com desconto →</a>';
 }
 
 /* ---- Lightbox ---- */
